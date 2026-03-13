@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/openclaw-guide/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/openclaw-guide/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/openclaw-guide/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/openclaw-guide/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/openclaw-guide/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"openclaw-community.github.io","root":"/openclaw-guide/","images":"/openclaw-guide/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/openclaw-guide/js/config.js" defer></script>
+
+    <meta name="description" content="OpenClaw 是一款开源的 AI 助理框架，本指南通过生活化的比喻，带你从零开始掌握 OpenClaw 的所有核心功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenClaw 小白完全指南：从入门到精通">
+<meta property="og:url" content="https://openclaw-community.github.io/openclaw-guide/2026/03/12/openclaw-guide/index.html">
+<meta property="og:site_name" content="OpenClaw 小白完全指南">
+<meta property="og:description" content="OpenClaw 是一款开源的 AI 助理框架，本指南通过生活化的比喻，带你从零开始掌握 OpenClaw 的所有核心功能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-13T13:10:55.984Z">
+<meta property="article:author" content="OpenClaw 社区">
+<meta property="article:tag" content="AI 助理">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="入门教程">
+<meta property="article:tag" content="开源">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://openclaw-community.github.io/openclaw-guide/2026/03/12/openclaw-guide/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://openclaw-community.github.io/openclaw-guide/2026/03/12/openclaw-guide/","path":"2026/03/12/openclaw-guide/","title":"OpenClaw 小白完全指南：从入门到精通"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OpenClaw 小白完全指南：从入门到精通 | OpenClaw 小白完全指南</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/openclaw-guide/js/utils.js" defer></script><script src="/openclaw-guide/js/motion.js" defer></script><script src="/openclaw-guide/js/sidebar.js" defer></script><script src="/openclaw-guide/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/openclaw-guide/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/openclaw-guide/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">OpenClaw 小白完全指南</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">从入门到精通（比喻版 · 零基础友好）</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%96-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">📖 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%97%EF%B8%8F-%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E7%AF%87"><span class="nav-number">2.</span> <span class="nav-text">🏗️ 第一篇：基础概念篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 核心组件总览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Gateway-%E7%BD%91%E5%85%B3%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 Gateway 网关详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.2.1 核心功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-%E5%A4%A7%E6%A5%BC%E7%9A%84%E2%80%9D%E9%97%A8%E2%80%9D%EF%BC%88%E7%AB%AF%E5%8F%A3%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">1.2.2 大楼的”门”（端口）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-%E6%80%8E%E4%B9%88%E2%80%9D%E5%BC%80%E5%BC%A0%E8%90%A5%E4%B8%9A%E2%80%9D%EF%BC%88%E5%90%AF%E5%8A%A8-Gateway%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">1.2.3 怎么”开张营业”（启动 Gateway）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Session-%E4%BC%9A%E8%AF%9D%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 Session 会话详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-%E5%8A%9E%E5%85%AC%E5%AE%A4%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.3.1 办公室类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-%E5%8A%9E%E5%85%AC%E5%AE%A4%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%88%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE%EF%BC%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">1.3.2 办公室在哪里（存储位置）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-3-%E5%8A%9E%E5%85%AC%E5%AE%A4%E2%80%9D%E9%87%8D%E7%BD%AE%E2%80%9D%E8%A7%84%E5%88%99"><span class="nav-number">2.3.3.</span> <span class="nav-text">1.3.3 办公室”重置”规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Memory-%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 Memory 记忆系统详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-%E6%A1%A3%E6%A1%88%E5%88%86%E7%B1%BB"><span class="nav-number">2.4.1.</span> <span class="nav-text">1.4.1 档案分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-%E4%BD%A0%E7%9A%84%E2%80%9D%E5%8A%9E%E5%85%AC%E6%A1%8C%E2%80%9D%E4%B8%8A%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%88%E5%B7%A5%E4%BD%9C%E5%8C%BA%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">2.4.2.</span> <span class="nav-text">1.4.2 你的”办公桌”上有什么（工作区文件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-%E6%99%BA%E8%83%BD%E2%80%9D%E6%A1%A3%E6%A1%88%E6%90%9C%E7%B4%A2%E2%80%9D"><span class="nav-number">2.4.3.</span> <span class="nav-text">1.4.3 智能”档案搜索”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-Channel-%E6%B8%A0%E9%81%93%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.5.</span> <span class="nav-text">1.5 Channel 渠道详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-%E6%94%AF%E6%8C%81%E7%9A%84%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">1.5.1 支持的联系方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-%E6%B6%88%E6%81%AF%E6%80%8E%E4%B9%88%E6%B5%81%E8%BD%AC"><span class="nav-number">2.5.2.</span> <span class="nav-text">1.5.2 消息怎么流转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E7%AC%AC%E4%BA%8C%E7%AF%87%EF%BC%9A%E6%93%8D%E4%BD%9C%E5%AE%9E%E6%88%98%E7%AF%87"><span class="nav-number">3.</span> <span class="nav-text">🛠️ 第二篇：操作实战篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%9A%E8%AE%AE%E5%AE%A4%EF%BC%88%E4%BC%9A%E8%AF%9D%EF%BC%89%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 会议室（会话）管理实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E7%9C%8B%E7%9C%8B%E7%8E%B0%E5%9C%A8%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%9A%E8%AE%AE%E5%AE%A4%E5%BC%80%E7%9D%80"><span class="nav-number">3.1.1.</span> <span class="nav-text">2.1.1 看看现在有哪些会议室开着</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E6%80%8E%E4%B9%88%E5%9B%9E%E5%88%B0%E4%B9%8B%E5%89%8D%E7%9A%84%E4%BC%9A%E8%AE%AE%E5%AE%A4"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.1.2 怎么回到之前的会议室</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-%E4%BC%9A%E8%AE%AE%E5%AE%A4%E5%B8%B8%E7%94%A8%E2%80%9D%E5%BF%AB%E6%8D%B7%E9%94%AE%E2%80%9D"><span class="nav-number">3.1.3.</span> <span class="nav-text">2.1.3 会议室常用”快捷键”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%A1%A3%E6%A1%88%EF%BC%88%E8%AE%B0%E5%BF%86%EF%BC%89%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 档案（记忆）管理实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E8%AE%A9%E5%8A%A9%E7%90%86%E8%AE%B0%E4%BD%8F%E9%87%8D%E8%A6%81%E7%9A%84%E4%BA%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.2.1 让助理记住重要的事</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E5%A4%87%E4%BB%BD%E4%BD%A0%E7%9A%84%E6%A1%A3%E6%A1%88"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2.2 备份你的档案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-%E6%81%A2%E5%A4%8D%E6%A1%A3%E6%A1%88"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.2.3 恢复档案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%EF%BC%88%E6%B8%A0%E9%81%93%EF%BC%89%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 联系方式（渠道）配置实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%80%BB%E9%83%A8%EF%BC%88Gateway%EF%BC%89%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 总部（Gateway）管理实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-%E7%9C%8B%E7%9C%8B%E5%85%AC%E5%8F%B8%E8%BF%90%E8%90%A5%E7%8A%B6%E6%80%81"><span class="nav-number">3.4.1.</span> <span class="nav-text">2.4.1 看看公司运营状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-%E5%85%AC%E5%8F%B8%E2%80%9D%E8%A7%84%E7%AB%A0%E5%88%B6%E5%BA%A6%E2%80%9D%EF%BC%88%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">3.4.2.</span> <span class="nav-text">2.4.2 公司”规章制度”（配置文件）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%93-%E7%AC%AC%E4%B8%89%E7%AF%87%EF%BC%9A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%AF%87"><span class="nav-number">4.</span> <span class="nav-text">❓ 第三篇：常见问题篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%BC%9A%E8%AE%AE%E5%AE%A4%EF%BC%88%E4%BC%9A%E8%AF%9D%EF%BC%89%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 会议室（会话）相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%A1%A3%E6%A1%88%EF%BC%88%E8%AE%B0%E5%BF%86%EF%BC%89%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 档案（记忆）相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%80%BB%E9%83%A8%EF%BC%88Gateway%EF%BC%89%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 总部（Gateway）相关问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%EF%BC%9A%E5%8F%AF%E4%BB%A5%E5%BC%80%E5%87%A0%E5%AE%B6%E5%88%86%E5%85%AC%E5%8F%B8%E5%90%97%EF%BC%88%E5%A4%9A-Gateway-%E5%AE%9E%E4%BE%8B%EF%BC%89%EF%BC%9F-A%EF%BC%9A%E5%8F%AF%E4%BB%A5%EF%BC%8C%E4%BD%86%E6%B2%A1%E5%BF%85%E8%A6%81%E3%80%82%E9%80%9A%E5%B8%B8%E4%B8%80%E5%AE%B6%E5%85%AC%E5%8F%B8%E5%B0%B1%E5%A4%9F%E4%BA%86%EF%BC%8C%E8%83%BD%E5%90%8C%E6%97%B6%E6%8E%A5%E6%89%80%E6%9C%89%E6%B8%A0%E9%81%93%E7%9A%84%E6%B6%88%E6%81%AF%E3%80%82%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E9%9A%94%E7%A6%BB%E4%B8%9A%E5%8A%A1%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%94%A8-dev-%E5%8F%82%E6%95%B0%E5%BC%80%E4%B8%AA%E5%88%86%E5%85%AC%E5%8F%B8%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">**Q：可以开几家分公司吗（多 Gateway 实例）？**A：可以，但没必要。通常一家公司就够了，能同时接所有渠道的消息。如果需要隔离业务，可以用 --dev 参数开个分公司。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-%E7%AC%AC%E5%9B%9B%E7%AF%87%EF%BC%9A%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E7%AF%87"><span class="nav-number">6.</span> <span class="nav-text">💡 第四篇：最佳实践篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E4%BC%9A%E8%AE%AE%E5%AE%A4%EF%BC%88%E4%BC%9A%E8%AF%9D%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">6.1.</span> <span class="nav-text">4.1 会议室（会话）使用最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A1%A3%E6%A1%88%EF%BC%88%E8%AE%B0%E5%BF%86%EF%BC%89%E7%AE%A1%E7%90%86%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">6.2.</span> <span class="nav-text">4.2 档案（记忆）管理最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%85%AC%E5%8F%B8%EF%BC%88Gateway%EF%BC%89%E8%BF%90%E7%BB%B4%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">6.3.</span> <span class="nav-text">4.3 公司（Gateway）运维最佳实践</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9A-%E6%89%A9%E5%B1%95%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="nav-number">7.</span> <span class="nav-text">📚 扩展学习资源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OpenClaw 社区</p>
+  <div class="site-description" itemprop="description">OpenClaw 是一款开源的 AI 助理框架，本指南通过生活化的比喻，带你从零开始掌握 OpenClaw 的所有核心功能。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/openclaw-guide/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/openclaw-guide/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/openclaw-guide/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://openclaw-community.github.io/openclaw-guide/2026/03/12/openclaw-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/openclaw-guide/images/avatar.gif">
+      <meta itemprop="name" content="OpenClaw 社区">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OpenClaw 小白完全指南">
+      <meta itemprop="description" content="OpenClaw 是一款开源的 AI 助理框架，本指南通过生活化的比喻，带你从零开始掌握 OpenClaw 的所有核心功能。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OpenClaw 小白完全指南：从入门到精通 | OpenClaw 小白完全指南">
+      <meta itemprop="description" content="OpenClaw 是一款开源的 AI 助理框架，本指南通过生活化的比喻，带你从零开始掌握 OpenClaw 的所有核心功能。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenClaw 小白完全指南：从入门到精通
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-03-12 00:00:00" itemprop="dateCreated datePublished" datetime="2026-03-12T00:00:00+08:00">2026-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-03-13 21:10:55" itemprop="dateModified" datetime="2026-03-13T21:10:55+08:00">2026-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/openclaw-guide/categories/%E6%95%99%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">教程指南</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">OpenClaw 是一款开源的 AI 助理框架，本指南通过生活化的比喻，带你从零开始掌握 OpenClaw 的所有核心功能。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>（比喻版 · 零基础友好）</p>
+<h2 id="📖-前言"><a href="#📖-前言" class="headerlink" title="📖 前言"></a>📖 前言</h2><p>你是否也遇到过这些困惑？</p>
+<ul>
+<li>用 <code>/new</code> 创建新会话后，之前的聊天记录”消失”了</li>
+<li>不知道智能体”记住”的内容存在哪里，换了设备就没了</li>
+<li>听别人说 Gateway、Session 这些词，完全不知道是什么意思</li>
+<li>想让智能体同时在飞书和微信回复你，却不知道怎么设置<br>没关系！这篇教程会用最生活化的比喻，把 OpenClaw 讲得明明白白，看完你就是 OpenClaw 管理高手。</li>
+</ul>
+<hr>
+<h2 id="🏗️-第一篇：基础概念篇"><a href="#🏗️-第一篇：基础概念篇" class="headerlink" title="🏗️ 第一篇：基础概念篇"></a>🏗️ 第一篇：基础概念篇</h2><p>我们把 OpenClaw 比作你开了一家 <strong>AI 助理公司</strong>，这样所有概念就都好懂了：</p>
+<h3 id="1-1-核心组件总览"><a href="#1-1-核心组件总览" class="headerlink" title="1.1 核心组件总览"></a>1.1 核心组件总览</h3><table>
+<thead>
+<tr>
+<th>技术名词</th>
+<th>公司里的角色</th>
+<th>生活化比喻</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Gateway 网关</strong></td>
+<td>公司总部大楼</td>
+<td>你家的总电闸 + 快递总站</td>
+<td>所有功能的核心，管理所有消息、员工和设备</td>
+</tr>
+<tr>
+<td><strong>Session 会话</strong></td>
+<td>独立的办公室</td>
+<td>微信的不同聊天窗口</td>
+<td>每个窗口聊不同的话题，互相不打扰</td>
+</tr>
+<tr>
+<td><strong>Memory 记忆</strong></td>
+<td>公司档案库</td>
+<td>你的笔记本</td>
+<td>重要的事情写在本子上，永远不会忘</td>
+</tr>
+<tr>
+<td><strong>Channel 渠道</strong></td>
+<td>对外接待窗口</td>
+<td>飞书、微信、电话等联系方式</td>
+<td>用户可以通过不同方式找到你的助理</td>
+</tr>
+</tbody></table>
+<p>是不是一下子就懂了？接下来我们逐个细说：</p>
+<h3 id="1-2-Gateway-网关详解"><a href="#1-2-Gateway-网关详解" class="headerlink" title="1.2 Gateway 网关详解"></a>1.2 Gateway 网关详解</h3><p>Gateway 就是你这家 AI 公司的<strong>总部大楼</strong>，所有事情都在这里发生：</p>
+<h4 id="1-2-1-核心功能"><a href="#1-2-1-核心功能" class="headerlink" title="1.2.1 核心功能"></a>1.2.1 核心功能</h4><p>就像大楼管理员一样，Gateway 管这些事：</p>
+<ul>
+<li>管大门：谁能进来（用户消息接入）</li>
+<li>管分配：用户消息送到哪个办公室（会话路由）</li>
+<li>管员工：安排智能体干活，调用各种工具</li>
+<li>管后勤：记录所有聊天记录，备份重要数据</li>
+</ul>
+<h4 id="1-2-2-大楼的”门”（端口）"><a href="#1-2-2-大楼的”门”（端口）" class="headerlink" title="1.2.2 大楼的”门”（端口）"></a>1.2.2 大楼的”门”（端口）</h4><p>Gateway 有几个固定的门，供不同功能使用：</p>
+<table>
+<thead>
+<tr>
+<th>门牌号（端口）</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>18789</td>
+<td>正门，所有人都从这里进</td>
+</tr>
+<tr>
+<td>18791</td>
+<td>侧门，专门给浏览器工具用</td>
+</tr>
+<tr>
+<td>18793</td>
+<td>后门，给展示界面用</td>
+</tr>
+</tbody></table>
+<h4 id="1-2-3-怎么”开张营业”（启动-Gateway）"><a href="#1-2-3-怎么”开张营业”（启动-Gateway）" class="headerlink" title="1.2.3 怎么”开张营业”（启动 Gateway）"></a>1.2.3 怎么”开张营业”（启动 Gateway）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 临时开张（关了终端就停止营业）</span></span><br><span class="line">openclaw gateway</span><br><span class="line"></span><br><span class="line"><span class="comment"># 永久开张（安装成自动服务，开机就运行）</span></span><br><span class="line">openclaw gateway install  <span class="comment"># 先注册公司</span></span><br><span class="line">openclaw gateway start    <span class="comment"># 开始营业</span></span><br><span class="line">openclaw gateway status   <span class="comment"># 看看今天有没有开门</span></span><br><span class="line">openclaw gateway restart  <span class="comment"># 休息一下再营业</span></span><br><span class="line">openclaw gateway stop     <span class="comment"># 今天打烊啦</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-Session-会话详解"><a href="#1-3-Session-会话详解" class="headerlink" title="1.3 Session 会话详解"></a>1.3 Session 会话详解</h3><p>Session 就是公司里的<strong>独立办公室</strong>，每个办公室聊不同的项目：</p>
+<h4 id="1-3-1-办公室类型"><a href="#1-3-1-办公室类型" class="headerlink" title="1.3.1 办公室类型"></a>1.3.1 办公室类型</h4><ul>
+<li><strong>总裁办公室（主会话 main）</strong>：你和助理的私人聊天，所有私人消息都在这里</li>
+<li><strong>项目会议室（群聊会话）</strong>：每个群聊是一个独立会议室，大家在这里讨论项目</li>
+<li><strong>小会议室（话题会话）</strong>：群里的某个话题单独开个小会，不打扰主会议室</li>
+<li><strong>自动办公室（定时任务）</strong>：到点自动开门干活，比如每天早上发天气预报</li>
+</ul>
+<h4 id="1-3-2-办公室在哪里（存储位置）"><a href="#1-3-2-办公室在哪里（存储位置）" class="headerlink" title="1.3.2 办公室在哪里（存储位置）"></a>1.3.2 办公室在哪里（存储位置）</h4><p>所有会议室的聊天记录都存在总部大楼里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/.openclaw/agents/你的助理ID/sessions/</span><br><span class="line">├── 办公室列表.json           # 记录所有办公室的门牌号</span><br><span class="line">├── 办公室1号.jsonl          # 1号办公室的所有聊天记录</span><br><span class="line">└── 办公室1号-话题3号.jsonl  # 1号办公室里第3个话题的聊天记录</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-3-办公室”重置”规则"><a href="#1-3-3-办公室”重置”规则" class="headerlink" title="1.3.3 办公室”重置”规则"></a>1.3.3 办公室”重置”规则</h4><p>就像会议室会定期打扫一样，会话也会自动重置：</p>
+<ul>
+<li>总裁办公室每天凌晨4点打扫干净，开始新的一天</li>
+<li>项目会议室没人用2小时后就打扫干净</li>
+<li>小会议室每天凌晨4点统一打扫<br>手动打扫办公室（重置会话）：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在聊天里发这个命令就行</span></span><br><span class="line">/new 或 /reset</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔍 常见疑问：用了 <code>/new</code> 之后之前的聊天记录去哪了？答：就像你打扫完会议室，之前的会议记录都存档了，并没有丢！回到之前的聊天窗口继续说话，就会重新打开那个会议室，之前的记录都还在。</p>
+</blockquote>
+<h3 id="1-4-Memory-记忆系统详解"><a href="#1-4-Memory-记忆系统详解" class="headerlink" title="1.4 Memory 记忆系统详解"></a>1.4 Memory 记忆系统详解</h3><p>记忆就是公司的<strong>档案库</strong>，重要的事情都会写在这里：</p>
+<h4 id="1-4-1-档案分类"><a href="#1-4-1-档案分类" class="headerlink" title="1.4.1 档案分类"></a>1.4.1 档案分类</h4><table>
+<thead>
+<tr>
+<th>档案类型</th>
+<th>存放位置</th>
+<th>比喻</th>
+<th>什么时候用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>每日工作笔记</td>
+<td><code>memory/2026-03-12.md</code></td>
+<td>你的日常记事本</td>
+<td>记录每天发生的事，最近两天的会自动放在助理桌上</td>
+</tr>
+<tr>
+<td>重要档案</td>
+<td><code>MEMORY.md</code></td>
+<td>保险柜里的重要文件</td>
+<td>记录长期不变的信息，只有在总裁办公室才能看</td>
+</tr>
+</tbody></table>
+<h4 id="1-4-2-你的”办公桌”上有什么（工作区文件）"><a href="#1-4-2-你的”办公桌”上有什么（工作区文件）" class="headerlink" title="1.4.2 你的”办公桌”上有什么（工作区文件）"></a>1.4.2 你的”办公桌”上有什么（工作区文件）</h4><p>你的助理的办公桌上永远放着这些文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">你的工作区（默认 ~/.openclaw/workspace）/</span><br><span class="line">├── 员工手册.md        # 告诉助理应该怎么工作</span><br><span class="line">├── 人设要求.md        # 助理的性格、说话风格</span><br><span class="line">├── 用户信息.md        # 你的名字、喜好、联系方式</span><br><span class="line">├── 助理身份.md        # 助理的名字、头像、性格</span><br><span class="line">├── 工具说明.md        # 各种工具怎么用</span><br><span class="line">├── 待办清单.md        # 定期要检查的事情</span><br><span class="line">├── 重要档案.md        # 长期记忆</span><br><span class="line">└── 每日笔记/          # 每天的工作记录</span><br><span class="line">    ├── 2026-03-10.md</span><br><span class="line">    ├── 2026-03-11.md</span><br><span class="line">    └── 2026-03-12.md</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-3-智能”档案搜索”"><a href="#1-4-3-智能”档案搜索”" class="headerlink" title="1.4.3 智能”档案搜索”"></a>1.4.3 智能”档案搜索”</h4><p>就像你有一个超级能干的档案管理员：</p>
+<ul>
+<li>你说”帮我找一下关于周三开会的记录”，即使你记不清具体日期，他也能找到相关内容</li>
+<li>既会搜意思相近的内容，也会搜 exact 关键词</li>
+<li>可以自己加其他档案柜，比如把公司的文档也加进来搜索</li>
+</ul>
+<h3 id="1-5-Channel-渠道详解"><a href="#1-5-Channel-渠道详解" class="headerlink" title="1.5 Channel 渠道详解"></a>1.5 Channel 渠道详解</h3><p>渠道就是你这家公司的<strong>对外联系方式</strong>：</p>
+<h4 id="1-5-1-支持的联系方式"><a href="#1-5-1-支持的联系方式" class="headerlink" title="1.5.1 支持的联系方式"></a>1.5.1 支持的联系方式</h4><table>
+<thead>
+<tr>
+<th>联系方式（渠道）</th>
+<th>特点</th>
+<th>配置难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>飞书</td>
+<td>公司里最常用</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>注册最快，5分钟就能用好</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>WhatsApp</td>
+<td>国外最常用，扫码就能用</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Discord</td>
+<td>社区爱好者常用</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>网页聊天</td>
+<td>直接在浏览器里用</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>iMessage</td>
+<td>苹果用户专属</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody></table>
+<h4 id="1-5-2-消息怎么流转"><a href="#1-5-2-消息怎么流转" class="headerlink" title="1.5.2 消息怎么流转"></a>1.5.2 消息怎么流转</h4><p>就像别人给你发消息：</p>
+<ol>
+<li>不管是飞书还是微信，消息先送到公司前台（Gateway）</li>
+<li>前台看是找谁的，送到对应的办公室（会话）</li>
+<li>助理处理完，写好回复，前台再通过原来的联系方式发回去</li>
+</ol>
+<hr>
+<h2 id="🛠️-第二篇：操作实战篇"><a href="#🛠️-第二篇：操作实战篇" class="headerlink" title="🛠️ 第二篇：操作实战篇"></a>🛠️ 第二篇：操作实战篇</h2><h3 id="2-1-会议室（会话）管理实战"><a href="#2-1-会议室（会话）管理实战" class="headerlink" title="2.1 会议室（会话）管理实战"></a>2.1 会议室（会话）管理实战</h3><h4 id="2-1-1-看看现在有哪些会议室开着"><a href="#2-1-1-看看现在有哪些会议室开着" class="headerlink" title="2.1.1 看看现在有哪些会议室开着"></a>2.1.1 看看现在有哪些会议室开着</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出所有会议室</span></span><br><span class="line">openclaw sessions --json</span><br><span class="line"></span><br><span class="line"><span class="comment"># 看看最近半小时有人用的会议室</span></span><br><span class="line">openclaw sessions --active 30</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-怎么回到之前的会议室"><a href="#2-1-2-怎么回到之前的会议室" class="headerlink" title="2.1.2 怎么回到之前的会议室"></a>2.1.2 怎么回到之前的会议室</h4><blockquote>
+<p>🔍 很多人问：新建了会话之后怎么回去？<br><strong>方法一：最常用</strong></p>
+</blockquote>
+<ul>
+<li>打开你之前聊天的那个窗口（飞书&#x2F;微信&#x2F; Telegram 都一样）</li>
+<li>直接发消息，自动就回到之前的会议室了<br><strong>方法二：手动指定</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 给指定会议室发消息</span></span><br><span class="line">openclaw message send --session 会议室门牌号 --message <span class="string">&quot;你好&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-3-会议室常用”快捷键”"><a href="#2-1-3-会议室常用”快捷键”" class="headerlink" title="2.1.3 会议室常用”快捷键”"></a>2.1.3 会议室常用”快捷键”</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>比喻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/status</code></td>
+<td>看看这个会议室现在的状态，用了多少”空间”</td>
+<td>看会议室里坐了多少人</td>
+</tr>
+<tr>
+<td><code>/context list</code></td>
+<td>看看现在会议室里有什么资料</td>
+<td>看桌上放了什么文件</td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>整理一下会议室的资料，腾出空间</td>
+<td>把旧文件存档，桌面收拾干净</td>
+</tr>
+<tr>
+<td><code>/stop</code></td>
+<td>让助理停下现在干的活</td>
+<td>打断正在汇报的员工</td>
+</tr>
+<tr>
+<td><code>/new [模型名]</code></td>
+<td>开个新的会议室，可选换个助理</td>
+<td>换个新办公室，可选换个专家来</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-档案（记忆）管理实战"><a href="#2-2-档案（记忆）管理实战" class="headerlink" title="2.2 档案（记忆）管理实战"></a>2.2 档案（记忆）管理实战</h3><h4 id="2-2-1-让助理记住重要的事"><a href="#2-2-1-让助理记住重要的事" class="headerlink" title="2.2.1 让助理记住重要的事"></a>2.2.1 让助理记住重要的事</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接说就行</span></span><br><span class="line"><span class="string">&quot;记住：我每周三下午2点都要开部门例会，别安排其他事&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 找档案</span></span><br><span class="line"><span class="string">&quot;帮我找找关于周三例会的记录&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-备份你的档案"><a href="#2-2-2-备份你的档案" class="headerlink" title="2.2.2 备份你的档案"></a>2.2.2 备份你的档案</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最简单的方法：把整个办公桌打包</span></span><br><span class="line">tar -czf 我的助理备份.tar.gz ~/.openclaw/workspace</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推荐方法：用 Git 备份，就像游戏存档一样</span></span><br><span class="line"><span class="built_in">cd</span> ~/.openclaw/workspace</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;2026-03-12 备份&quot;</span></span><br><span class="line">git push</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-3-恢复档案"><a href="#2-2-3-恢复档案" class="headerlink" title="2.2.3 恢复档案"></a>2.2.3 恢复档案</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压缩备份</span></span><br><span class="line">tar -xzf 我的助理备份.tar.gz -C ~/.openclaw/workspace</span><br><span class="line"></span><br><span class="line"><span class="comment"># Git 恢复</span></span><br><span class="line"><span class="built_in">cd</span> ~/.openclaw/workspace</span><br><span class="line">git pull</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-联系方式（渠道）配置实战"><a href="#2-3-联系方式（渠道）配置实战" class="headerlink" title="2.3 联系方式（渠道）配置实战"></a>2.3 联系方式（渠道）配置实战</h3><p>以飞书为例，就像给公司开通飞书账号：</p>
+<ol>
+<li>去飞书开放平台注册一个机器人”员工”</li>
+<li>拿到这个员工的工号（App ID）和密码（App Secret）</li>
+<li>告诉公司管理员（修改配置文件 <code>~/.openclaw/openclaw.json</code>）</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;channels&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;feishu&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;appId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的飞书机器人App ID&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;appSecret&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的飞书机器人App Secret&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>重启一下公司服务：<code>openclaw gateway restart</code></li>
+</ol>
+<h3 id="2-4-总部（Gateway）管理实战"><a href="#2-4-总部（Gateway）管理实战" class="headerlink" title="2.4 总部（Gateway）管理实战"></a>2.4 总部（Gateway）管理实战</h3><h4 id="2-4-1-看看公司运营状态"><a href="#2-4-1-看看公司运营状态" class="headerlink" title="2.4.1 看看公司运营状态"></a>2.4.1 看看公司运营状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简单看一下有没有开门</span></span><br><span class="line">openclaw gateway status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细看一下运营健康状况</span></span><br><span class="line">openclaw gateway health</span><br><span class="line"></span><br><span class="line"><span class="comment"># 看实时监控画面（日志）</span></span><br><span class="line">openclaw logs --follow</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-2-公司”规章制度”（配置文件）"><a href="#2-4-2-公司”规章制度”（配置文件）" class="headerlink" title="2.4.2 公司”规章制度”（配置文件）"></a>2.4.2 公司”规章制度”（配置文件）</h4><p>位置：<code>~/.openclaw/openclaw.json</code>常用的规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;session&quot;: &#123;</span><br><span class="line">    &quot;reset&quot;: &#123;</span><br><span class="line">      &quot;mode&quot;: &quot;daily&quot;,      // 每天打扫一次会议室</span><br><span class="line">      &quot;atHour&quot;: 4,          // 凌晨4点打扫</span><br><span class="line">      &quot;idleMinutes&quot;: 120    // 没人用2小时就打扫</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;agents&quot;: &#123;</span><br><span class="line">    &quot;defaults&quot;: &#123;</span><br><span class="line">      &quot;workspace&quot;: &quot;~/.openclaw/workspace&quot;,  // 办公桌位置</span><br><span class="line">      &quot;model&quot;: &quot;anthropic/claude-3-opus&quot;     // 用哪个级别的助理</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="❓-第三篇：常见问题篇"><a href="#❓-第三篇：常见问题篇" class="headerlink" title="❓ 第三篇：常见问题篇"></a>❓ 第三篇：常见问题篇</h2><h3 id="3-1-会议室（会话）相关问题"><a href="#3-1-会议室（会话）相关问题" class="headerlink" title="3.1 会议室（会话）相关问题"></a>3.1 会议室（会话）相关问题</h3><p>**Q：我用了 &#x2F;new 之后，之前的聊天记录找不到了怎么办？**A：就像你开了新的会议室，旧的会议室只是锁起来了，没有拆！回到之前的聊天窗口发个消息，旧会议室就开门了，所有记录都在。所有记录永久存在 <code>~/.openclaw/agents/你的助理ID/sessions/</code> 目录下。<br>**Q：会议室会自动拆掉吗？**A：不会。打扫只是把桌上的东西收走，房间和之前的记录都永久保留，除非你手动拆（删除文件）。<br><strong>Q：没用的会议室太多了怎么清理？</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拆掉指定的会议室</span></span><br><span class="line"><span class="built_in">rm</span> ~/.openclaw/agents/你的助理ID/sessions/会议室号.jsonl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拆掉所有30天没人用的会议室</span></span><br><span class="line">find ~/.openclaw/agents/你的助理ID/sessions/ -name <span class="string">&quot;*.jsonl&quot;</span> -mtime +30 -delete</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-档案（记忆）相关问题"><a href="#3-2-档案（记忆）相关问题" class="headerlink" title="3.2 档案（记忆）相关问题"></a>3.2 档案（记忆）相关问题</h3><p>**Q：为什么助理有时候会”忘了”之前说过的话？**A：两种可能：</p>
+<ol>
+<li>你换了新的会议室，桌上没有放之前的档案</li>
+<li>你没让他”记住”，他只是临时记在脑子里，打扫会议室就忘了<br>解决方法：重要的事说一句”帮我记住这件事”，他就会写进档案里，永远不会忘。<br>**Q：档案会不会占很多地方？**A：完全不会！都是纯文本，就像你写日记，写十年也只有几十MB，还不如一张照片大。<br>**Q：换电脑了怎么把记忆带过去？**A：把 <code>~/.openclaw/workspace</code> 目录复制过去就行，就像你把笔记本带到新公司一样。</li>
+</ol>
+<h3 id="3-3-总部（Gateway）相关问题"><a href="#3-3-总部（Gateway）相关问题" class="headerlink" title="3.3 总部（Gateway）相关问题"></a>3.3 总部（Gateway）相关问题</h3><p><strong>Q：公司打不开门了（Gateway 启动失败）怎么办？</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先看看出什么事了</span></span><br><span class="line">openclaw logs --<span class="built_in">tail</span> 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最常见原因：被别的公司占了地方（端口被占用）</span></span><br><span class="line">lsof -i :18789  <span class="comment"># 看看谁占了你的地址</span></span><br><span class="line"><span class="built_in">kill</span> -9 &lt;进程ID&gt;   <span class="comment"># 把他赶走</span></span><br><span class="line">openclaw gateway start  <span class="comment"># 重新开门</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>**Q：我在外地怎么访问公司？**A：推荐用 Tailscale 虚拟专用网络，或者用 SSH 隧道：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -L 18789:127.0.0.1:18789 你的用户名@公司服务器地址</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Q：可以开几家分公司吗（多-Gateway-实例）？-A：可以，但没必要。通常一家公司就够了，能同时接所有渠道的消息。如果需要隔离业务，可以用-dev-参数开个分公司。"><a href="#Q：可以开几家分公司吗（多-Gateway-实例）？-A：可以，但没必要。通常一家公司就够了，能同时接所有渠道的消息。如果需要隔离业务，可以用-dev-参数开个分公司。" class="headerlink" title="**Q：可以开几家分公司吗（多 Gateway 实例）？**A：可以，但没必要。通常一家公司就够了，能同时接所有渠道的消息。如果需要隔离业务，可以用 --dev 参数开个分公司。"></a>**Q：可以开几家分公司吗（多 Gateway 实例）？**A：可以，但没必要。通常一家公司就够了，能同时接所有渠道的消息。如果需要隔离业务，可以用 <code>--dev</code> 参数开个分公司。</h2><h2 id="💡-第四篇：最佳实践篇"><a href="#💡-第四篇：最佳实践篇" class="headerlink" title="💡 第四篇：最佳实践篇"></a>💡 第四篇：最佳实践篇</h2><h3 id="4-1-会议室（会话）使用最佳实践"><a href="#4-1-会议室（会话）使用最佳实践" class="headerlink" title="4.1 会议室（会话）使用最佳实践"></a>4.1 会议室（会话）使用最佳实践</h3><ul>
+<li>总裁办公室用来和助理聊私人问题，保持连续性</li>
+<li>不同的项目建不同的群聊&#x2F;话题，自动隔离</li>
+<li>重要的决策说一句”记住这个”，写入档案</li>
+<li>会议室满了（上下文太长）就用 <code>/compact</code> 整理一下，提高效率</li>
+</ul>
+<h3 id="4-2-档案（记忆）管理最佳实践"><a href="#4-2-档案（记忆）管理最佳实践" class="headerlink" title="4.2 档案（记忆）管理最佳实践"></a>4.2 档案（记忆）管理最佳实践</h3><ul>
+<li>每天的聊天记录自动存在每日笔记里，不用你管</li>
+<li>定期整理重要档案，把没用的内容删掉</li>
+<li>用 Git 备份，不怕数据丢失</li>
+<li>密码、密钥这些敏感东西不要写在档案里，用密码管理器存</li>
+</ul>
+<h3 id="4-3-公司（Gateway）运维最佳实践"><a href="#4-3-公司（Gateway）运维最佳实践" class="headerlink" title="4.3 公司（Gateway）运维最佳实践"></a>4.3 公司（Gateway）运维最佳实践</h3><ul>
+<li>把公司设成开机自动启动，不用每次手动开门</li>
+<li>定期备份整个 <code>~/.openclaw</code> 目录，就像给公司买保险</li>
+<li>偶尔看看监控日志，有没有异常情况</li>
+<li>每个月更新一次系统：<code>openclaw update</code>，用上最新功能</li>
+</ul>
+<hr>
+<h2 id="📚-扩展学习资源"><a href="#📚-扩展学习资源" class="headerlink" title="📚 扩展学习资源"></a>📚 扩展学习资源</h2><ul>
+<li>官方文档：<a target="_blank" rel="noopener" href="https://docs.openclaw.ai/">https://docs.openclaw.ai</a></li>
+<li>GitHub 仓库：<a target="_blank" rel="noopener" href="https://github.com/openclaw/openclaw">https://github.com/openclaw/openclaw</a></li>
+<li>Discord 社区：<a target="_blank" rel="noopener" href="https://discord.com/invite/clawd">https://discord.com/invite/clawd</a></li>
+<li>技能市场：<a target="_blank" rel="noopener" href="https://clawhub.com/">https://clawhub.com</a></li>
+</ul>
+<hr>
+<p><em>本教程基于 OpenClaw v0.15+ 版本编写，最后更新时间：2026-03-12</em></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/openclaw-guide/tags/OpenClaw/" rel="tag"># OpenClaw</a>
+              <a href="/openclaw-guide/tags/AI-%E5%8A%A9%E7%90%86/" rel="tag"># AI 助理</a>
+              <a href="/openclaw-guide/tags/%E5%BC%80%E6%BA%90/" rel="tag"># 开源</a>
+              <a href="/openclaw-guide/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag"># 入门教程</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">OpenClaw 社区</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">3k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
